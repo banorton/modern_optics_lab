@@ -1,0 +1,14 @@
+All sample data was taken with
+
+3 Volts
+15ms Integration Time
+10 Scans to Average
+0 Box Car Width
+
+The fiberoptic cable was 32cm away
+from the lamp. The sample was 24cm
+away from the lamp.
+
+3G2 appears green
+2G2 appears blue
+1G2 appears pink

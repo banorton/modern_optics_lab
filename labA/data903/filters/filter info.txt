@@ -1,0 +1,9 @@
+filters were 10cm away from lamp
+3 Volts
+15ms integration time
+10 scans to average
+0 boxcar width
+
+the transmission data and irradiance
+data went above 100% which means the
+data must be useless
