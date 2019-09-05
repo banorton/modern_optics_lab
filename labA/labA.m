@@ -121,23 +121,6 @@ plot(X1g2_transmission_without_plastic_cover(:,1), X1g2_transmission_without_pla
 % title('3g2 transmission without plastic cover')
 % ylim([0 100])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 
@@ -173,3 +156,37 @@ plot(X1g2_transmission_without_plastic_cover(:,1), X1g2_transmission_without_pla
 % ylim([0 4*10^4])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
+clear;clc;
+
+%Derivative of Transmission
+
+
+
+
+diff(X1g2_transmission
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
