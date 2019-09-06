@@ -238,14 +238,18 @@ clf;
 % ydiff = diff(X1g2_transmission_with_plastic_cover(:,2));
 % x = xdiff./ydiff;
 
-sample_01 = X3g2_transmission_without_plastic_cover(:,1);
-sample_02 = X3g2_transmission_without_plastic_cover(:,2);
+%SPECTRAL CONSTRAST ESTIMATER: INPUT THE SAMPLE AND THE WAVELENGTHS TO MEASURE AND SAMPLE RATE
+sample_01 = X1g2_transmission_without_plastic_cover(:,1);
+sample_02 = X1g2_transmission_without_plastic_cover(:,2);
+start = 480;
+finish = 980;
+samplerate = 40;
 
 
-samplerate = 30;
+
 mask = zeros(1,numel(sample_01));
 stepsize = round(numel(sample_01)/samplerate);
-for i = 480:stepsize:numel(sample_01)
+for i = start:stepsize:numel(sample_01)
    mask(i) = 1;
 end
 x = sample_01;
@@ -261,21 +265,30 @@ end
 
 
 figure(1)
-plot(z(:,1),z(:,2))
-    ylim([0 100])
-    xlim([345 1040])
-    
-figure(2)
-y1 = diff(z(:,2))./diff(z(:,1));
-x1 = 480:(1040-480)/(numel(y1)-1):1040;
-plot(x1,y1,'b')
-    xlim([345 1040])
-    
-    
-figure(3)
+subplot(1,3,1)
 plot(sample_01,sample_02)
     ylim([0 100])
-    xlim([345 1040])
+    xlim([start finish])
+    title('1G2 Transmission w/o Plastic')
+    xlabel('Wavelength (nm)')
+    ylabel('Intensity (counts)')
+    
+subplot(1,3,2)
+plot(z(:,1),z(:,2))
+    ylim([0 100])
+    xlim([start finish])
+    title('Sample of 1G2 Transmission w/o Plastic')
+    xlabel('Wavelength (nm)')
+    ylabel('Intensity (counts)')
+    
+subplot(1,3,3)
+y1 = diff(z(:,2))./diff(z(:,1));
+x1 = start:(finish-start)/(numel(y1)-1):finish;
+plot(x1,y1,'b')
+    title('Estimated Spectral Contrast')
+    xlabel('Wavelength (nm)')
+    ylabel('Intensity/Wavelength (counts/nm)')
+    xlim([start finish])
 
 % figure(2)
 % plot(X1g2_transmission_with_plastic_cover(:,1), X1g2_transmission_with_plastic_cover(:,2))
