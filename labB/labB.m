@@ -77,7 +77,7 @@ volt3g2550halfwp = X3g2550halfwp(:,2);
 figure(1)
 subplot(1,2,1)
 plot(theta, volt)
-    title('CHARACTERIZATION OF THE POLARIZER')
+    suptitle('CHARACTERIZATION OF THE POLARIZER')
 subplot(1,2,2)
 polarscatter(theta, volt)
     hold on
@@ -92,7 +92,7 @@ polarplot(theta, volt, 'b-')
 figure(2)
 subplot(1,2,1)
 scatter(theta1g2750, volt1g2750, 'co')
-    title('1G2 SAMPLE 750nm')
+    suptitle('1G2 SAMPLE 750nm')
     hold on
 plot(theta1g2750, volt1g2750, 'c-')
     hold on
@@ -118,7 +118,7 @@ polarplot(theta1g2750halfwp, volt1g2750halfwp, 'b-')
 figure(3)
 subplot(1,2,1)
 scatter(theta1g2550, volt1g2550, 'co')
-    title('1G2 SAMPLE 550nm')
+    suptitle('1G2 SAMPLE 550nm')
     hold on
 plot(theta1g2550, volt1g2550, 'c-')
     hold on
@@ -145,7 +145,7 @@ polarplot(theta1g2550halfwp, volt1g2550halfwp, 'b-')
 figure(4)
 subplot(1,2,1)
 scatter(theta2g2750, volt2g2750, 'co')
-    title('2G2 SAMPLE 750nm')
+    suptitle('2G2 SAMPLE 750nm')
     hold on
 plot(theta2g2750, volt2g2750, 'c-')
     hold on
@@ -171,7 +171,7 @@ polarplot(theta2g2750halfwp, volt2g2750halfwp, 'b-')
 figure(5)
 subplot(1,2,1)
 scatter(theta2g2550, volt2g2550, 'co')
-    title('2G2 SAMPLE 550nm')
+    suptitle('2G2 SAMPLE 550nm')
     hold on
 plot(theta2g2550, volt2g2550, 'c-')
     hold on
@@ -197,7 +197,7 @@ polarplot(theta2g2550halfwp, volt2g2550halfwp, 'b-')
 figure(6)
 subplot(1,2,1)
 scatter(theta3g2750, volt3g2750, 'co')
-    title('3G2 SAMPLE 750nm')
+    suptitle('3G2 SAMPLE 750nm')
     hold on
 plot(theta3g2750, volt3g2750, 'c-')
     hold on
@@ -223,7 +223,7 @@ polarplot(theta3g2750halfwp, volt3g2750halfwp, 'b-')
 figure(7)
 subplot(1,2,1)
 scatter(theta3g2550, volt3g2550, 'co')
-    title('3G2 SAMPLE 550nm')
+    suptitle('3G2 SAMPLE 550nm')
     hold on
 plot(theta3g2550, volt3g2550, 'c-')
     hold on
