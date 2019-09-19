@@ -1,7 +1,7 @@
 clc;clear;clf;
 
 %INPUTS
-phi = deg2rad(0);
+phi = deg2rad(80);
 smoothness_of_animation = .03;
 speed_of_animation = .001;
 time_length = 4;
