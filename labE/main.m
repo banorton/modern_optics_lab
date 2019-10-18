@@ -44,7 +44,8 @@ plot(B3(1,:), B3(2,:), 'black')
 hold on
 plot(B3(3,:), B3(4,:), 'blue')
 hold on
-    legend('45° AOI', '63° AOI', 'location', 'northeast')
+    lgd = legend('45° AOI', '63° AOI', 'location', 'northeast');
+    set(lgd, 'fontsize', 20)
     hold on
     title('B3')
     hold on
@@ -62,7 +63,8 @@ plot(B4(1,:), B4(2,:), 'black')
 hold on
 plot(B4(3,:), B4(4,:), 'blue')
 hold on
-    legend('45° AOI', '63° AOI', 'location', 'southeast')
+    lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
+    set(lgd, 'fontsize', 20)
     hold on
     title('B4')
     hold on
@@ -80,7 +82,8 @@ plot(F(1,:), F(2,:), 'black')
 hold on
 plot(F(3,:), F(4,:), 'blue')
 hold on
-    legend('45° AOI', '63° AOI', 'location', 'southeast')
+    lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
+    set(lgd, 'fontsize', 20)
     hold on
     title('F')
     hold on
@@ -98,7 +101,8 @@ plot(Si(1,:), Si(2,:), 'black')
 hold on
 plot(Si(3,:), Si(4,:), 'blue')
 hold on
-    legend('45° AOI', '63° AOI', 'location', 'southeast')
+    lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
+    set(lgd, 'fontsize', 20)
     hold on
     title('Si')
     hold on
