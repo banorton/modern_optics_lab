@@ -25,7 +25,8 @@ plot(B2(1,:), B2(2,:), 'black')
 hold on
 plot(B2(3,:), B2(4,:), 'blue')
 hold on
-    legend('45° AOI', '63° AOI', 'location', 'southeast')
+    lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
+    set(lgd, 'fontsize', 20)
     hold on
     title('B2')
     hold on
