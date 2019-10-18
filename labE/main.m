@@ -23,7 +23,7 @@ figure(1)
 set(gcf, 'color', 'w')
 plot(B2(1,:), B2(2,:), 'black')
 hold on
-plot(B2(3,:), B2(4,:), 'blue')
+plot(B2(3,:), B2(4,:), 'cyan')
 hold on
     lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
     set(lgd, 'fontsize', 20)
@@ -42,7 +42,7 @@ figure(2)
 set(gcf, 'color', 'w')
 plot(B3(1,:), B3(2,:), 'black')
 hold on
-plot(B3(3,:), B3(4,:), 'blue')
+plot(B3(3,:), B3(4,:), 'cyan')
 hold on
     lgd = legend('45° AOI', '63° AOI', 'location', 'northeast');
     set(lgd, 'fontsize', 20)
@@ -61,7 +61,7 @@ figure(3)
 set(gcf, 'color', 'w')
 plot(B4(1,:), B4(2,:), 'black')
 hold on
-plot(B4(3,:), B4(4,:), 'blue')
+plot(B4(3,:), B4(4,:), 'cyan')
 hold on
     lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
     set(lgd, 'fontsize', 20)
@@ -80,7 +80,7 @@ figure(4)
 set(gcf, 'color', 'w')
 plot(F(1,:), F(2,:), 'black')
 hold on
-plot(F(3,:), F(4,:), 'blue')
+plot(F(3,:), F(4,:), 'cyan')
 hold on
     lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
     set(lgd, 'fontsize', 20)
@@ -99,7 +99,7 @@ figure(5)
 set(gcf, 'color', 'w')
 plot(Si(1,:), Si(2,:), 'black')
 hold on
-plot(Si(3,:), Si(4,:), 'blue')
+plot(Si(3,:), Si(4,:), 'cyan')
 hold on
     lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
     set(lgd, 'fontsize', 20)
