@@ -1,40 +1,51 @@
 clear;clc;clf;
 %% LOADING DATA
-load b20_45.txt
-load b20_63.3.txt
-load B3_45.txt
-load B3_63.3.txt
-load b4_45.txt
-load b4_63.3.txt
-load sampleF_45.txt
-load sampleF_63.3.txt
-load Si_45.txt
-load Si_63.3.txt
+load b20_10.txt
+load b20_5.txt
+load b3_10.txt
+load b3_5.txt
+load b4_10.txt
+load b4_5.txt
+load f_10.txt
+load f_5.txt
+load si_10.txt
+load si_5.txt
 
-B2 = [b20_45,b20_63_3]';
-B3 = [B3_45,B3_63_3]';
-B4 = [b4_45,b4_63_3]';
-F = [sampleF_45,sampleF_63_3]';
-Si = [Si_45,Si_63_3]';
+B20 = [b20_5,b20_10]';
+B3 = [b3_5,b3_10]';
+B4 = [b4_5,b4_10]';
+F = [f_5,f_10]';
+Si = [si_5,si_10]';
+B20(2,:) = B20(2,:)./Si(2,:);
+B20(4,:) = B20(4,:)./Si(4,:);
+B3(2,:) = B3(2,:)./Si(2,:);
+B3(4,:) = B3(4,:)./Si(4,:);
+B4(2,:) = B4(2,:)./Si(2,:);
+B4(4,:) = B4(4,:)./Si(4,:);
+F(2,:) = F(2,:)./Si(2,:);
+F(4,:) = F(4,:)./Si(4,:);
 %% FIGURES
+xLimMax = 1000;
+xLimMin = 550;
+yLimMax = 1.7;
 
 %SAMPLE B2
 figure(1)
 set(gcf, 'color', 'w')
-plot(B2(1,:), B2(2,:), 'black')
+plot(B20(1,:), B20(2,:), 'black')
 hold on
-plot(B2(3,:), B2(4,:), 'cyan')
+plot(B20(3,:), B20(4,:), 'cyan')
 hold on
-    lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
+    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
     set(lgd, 'fontsize', 20)
     hold on
-    title('B2')
+    title('B20')
     hold on
     xlabel('Wavelength (nm)')
     ylabel('Reflectance (%)')
     hold on
-    ylim([0 45])
-    xlim([550 1020])
+    ylim([0 yLimMax])
+    xlim([xLimMin xLimMax])
     hold off
 
 %SAMPLE B3
@@ -44,7 +55,7 @@ plot(B3(1,:), B3(2,:), 'black')
 hold on
 plot(B3(3,:), B3(4,:), 'cyan')
 hold on
-    lgd = legend('45° AOI', '63° AOI', 'location', 'northeast');
+    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
     set(lgd, 'fontsize', 20)
     hold on
     title('B3')
@@ -52,8 +63,8 @@ hold on
     xlabel('Wavelength (nm)')
     ylabel('Reflectance (%)')
     hold on
-    ylim([0 25])
-    xlim([550 1020])
+    ylim([0 yLimMax])
+    xlim([xLimMin xLimMax])
     hold off
 
 %SAMPLE B4
@@ -63,7 +74,7 @@ plot(B4(1,:), B4(2,:), 'black')
 hold on
 plot(B4(3,:), B4(4,:), 'cyan')
 hold on
-    lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
+    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
     set(lgd, 'fontsize', 20)
     hold on
     title('B4')
@@ -71,8 +82,8 @@ hold on
     xlabel('Wavelength (nm)')
     ylabel('Reflectance (%)')
     hold on
-    ylim([0 45])
-    xlim([550 1020])
+    ylim([0 yLimMax])
+    xlim([xLimMin xLimMax])
     hold off
 
 %SAMPLE F
@@ -82,7 +93,7 @@ plot(F(1,:), F(2,:), 'black')
 hold on
 plot(F(3,:), F(4,:), 'cyan')
 hold on
-    lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
+    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
     set(lgd, 'fontsize', 20)
     hold on
     title('F')
@@ -90,8 +101,8 @@ hold on
     xlabel('Wavelength (nm)')
     ylabel('Reflectance (%)')
     hold on
-    ylim([0 35])
-    xlim([550 1020])
+    ylim([0 yLimMax])
+    xlim([xLimMin xLimMax])
     hold off
 
 %SAMPLE SI
@@ -101,7 +112,7 @@ plot(Si(1,:), Si(2,:), 'black')
 hold on
 plot(Si(3,:), Si(4,:), 'cyan')
 hold on
-    lgd = legend('45° AOI', '63° AOI', 'location', 'southeast');
+    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
     set(lgd, 'fontsize', 20)
     hold on
     title('Si')
@@ -109,7 +120,7 @@ hold on
     xlabel('Wavelength (nm)')
     ylabel('Reflectance (%)')
     hold on
-    ylim([0 60])
-    xlim([550 1020])
+    ylim([0 80])
+    xlim([xLimMin xLimMax])
     hold off
 %%
