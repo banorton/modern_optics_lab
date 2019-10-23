@@ -23,16 +23,20 @@ B20(4,:) = B20(4,:)./Si(4,:);
 B20 = [(B20(1,:).*(B20(1,:)>=550));(B20(2,:).*(B20(1,:)>=550));(B20(3,:).*(B20(1,:)>=550));(B20(4,:).*(B20(1,:)>=550))];
 B20 = [(B20(1,:).*(B20(1,:)<=1000));(B20(2,:).*(B20(1,:)<=1000));(B20(3,:).*(B20(1,:)<=1000));(B20(4,:).*(B20(1,:)<=1000))];
 B20 = [B20(1,(B20(1,:)~=0));B20(2,(B20(1,:)~=0));B20(3,(B20(1,:)~=0));B20(4,(B20(1,:)~=0))];
-% B20_5_min = min(B20(2,:));
-% B20_10_min = min(B20(4,:));
+B20_5_max = B20(1,:).*(B20(2,:)==max(B20(2,:)));
+B20_5_max = B20_5_max(B20_5_max~=0);
+B20_10_max = B20(1,:).*(B20(4,:)==max(B20(4,:)));
+B20_10_max = B20_10_max(B20_10_max~=0);
 
 B3(2,:) = B3(2,:)./Si(2,:);
 B3(4,:) = B3(4,:)./Si(4,:);
 B3 = [(B3(1,:).*(B3(1,:)>=550));(B3(2,:).*(B3(1,:)>=550));(B3(3,:).*(B3(1,:)>=550));(B3(4,:).*(B3(1,:)>=550))];
 B3 = [(B3(1,:).*(B3(1,:)<=1000));(B3(2,:).*(B3(1,:)<=1000));(B3(3,:).*(B3(1,:)<=1000));(B3(4,:).*(B3(1,:)<=1000))];
 B3 = [B3(1,(B3(1,:)~=0));B3(2,(B3(1,:)~=0));B3(3,(B3(1,:)~=0));B3(4,(B3(1,:)~=0))];
-% B3_5_min = min(B3(2,:));
-% B3_10_min = min(B3(4,:));
+B3_5_max = B3(1,:).*(B3(2,:)==max(B3(2,:)));
+B3_5_max = B3_5_max(B3_5_max~=0);
+B3_10_max = B3(1,:).*(B3(4,:)==max(B3(4,:)));
+B3_10_max = B3_10_max(B3_10_max~=0);
 
 B4(2,:) = B4(2,:)./Si(2,:);
 B4(4,:) = B4(4,:)./Si(4,:);
@@ -40,9 +44,9 @@ B4 = [(B4(1,:).*(B4(1,:)>=550));(B4(2,:).*(B4(1,:)>=550));(B4(3,:).*(B4(1,:)>=55
 B4 = [(B4(1,:).*(B4(1,:)<=1000));(B4(2,:).*(B4(1,:)<=1000));(B4(3,:).*(B4(1,:)<=1000));(B4(4,:).*(B4(1,:)<=1000))];
 B4 = [B4(1,(B4(1,:)~=0));B4(2,(B4(1,:)~=0));B4(3,(B4(1,:)~=0));B4(4,(B4(1,:)~=0))];
 B4_5_min = B4(1,:).*(B4(2,:)==min(B4(2,:)));
-B4_5_min = B4_5_min(B4_5_min~=0)
+B4_5_min = B4_5_min(B4_5_min~=0);
 B4_10_min = B4(1,:).*(B4(4,:)==min(B4(4,:)));
-B4_10_min = B4_10_min(B4_10_min~=0)
+B4_10_min = B4_10_min(B4_10_min~=0);
 
 F(2,:) = F(2,:)./Si(2,:);
 F(4,:) = F(4,:)./Si(4,:);
@@ -50,9 +54,9 @@ F = [(F(1,:).*(F(1,:)>=550));(F(2,:).*(F(1,:)>=550));(F(3,:).*(F(1,:)>=550));(F(
 F = [(F(1,:).*(F(1,:)<=1000));(F(2,:).*(F(1,:)<=1000));(F(3,:).*(F(1,:)<=1000));(F(4,:).*(F(1,:)<=1000))];
 F = [F(1,(F(1,:)~=0));F(2,(F(1,:)~=0));F(3,(F(1,:)~=0));F(4,(F(1,:)~=0))];
 F_5_min = F(1,:).*(F(2,:)==min(F(2,:)));
-F_5_min = F_5_min(F_5_min~=0)
+F_5_min = F_5_min(F_5_min~=0);
 F_10_min = F(1,:).*(F(4,:)==min(F(4,:)));
-F_10_min = F_10_min(F_10_min~=0)
+F_10_min = F_10_min(F_10_min~=0);
 
 %% FIGURES
 xLimMax = 1000;
@@ -72,7 +76,14 @@ hold on
     title('B20')
     hold on
     xlabel('Wavelength (nm)')
-    ylabel('Reflectance (%)')
+    ylabel('Transmittance (%)')
+    hold on
+    h1 = plot([B20_5_max B20_5_max],[0 100], 'r--');
+    h2 = plot([B20_10_max B20_10_max],[0 100], 'r--');
+    set(get(get(h1,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
+    set(get(get(h2,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
+    hold on
+    text(B20_10_max+(B20_10_max/50), 1.5, sprintf('\\Delta\\lambda = %.1fnm',abs(B20_10_max-B20_5_max)))
     hold on
     ylim([0 yLimMax])
     xlim([xLimMin xLimMax])
@@ -91,7 +102,14 @@ hold on
     title('B3')
     hold on
     xlabel('Wavelength (nm)')
-    ylabel('Reflectance (%)')
+    ylabel('Transmittance (%)')
+    hold on
+    h1 = plot([B3_5_max B3_5_max],[0 100], 'r--');
+    h2 = plot([B3_10_max B3_10_max],[0 100], 'r--');
+    set(get(get(h1,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
+    set(get(get(h2,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
+    hold on
+    text(B3_5_max+(B3_5_max/50), 1.5, sprintf('\\Delta\\lambda = %.1fnm',abs(B3_10_max-B3_5_max)))
     hold on
     ylim([0 yLimMax])
     xlim([xLimMin xLimMax])
@@ -110,12 +128,14 @@ hold on
     title('B4')
     hold on
     xlabel('Wavelength (nm)')
-    ylabel('Reflectance (%)')
+    ylabel('Transmittance (%)')
     hold on
     h1 = plot([B4_5_min B4_5_min],[0 100], 'r--');
     h2 = plot([B4_10_min B4_10_min],[0 100], 'r--');
     set(get(get(h1,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
     set(get(get(h2,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
+    hold on
+    text(B4_5_min+(B4_5_min/50), 1.5, sprintf('\\Delta\\lambda = %.1fnm',abs(B4_10_min-B4_5_min)))
     hold on
     ylim([0 yLimMax])
     xlim([xLimMin xLimMax])
@@ -134,12 +154,14 @@ hold on
     title('F')
     hold on
     xlabel('Wavelength (nm)')
-    ylabel('Reflectance (%)')
+    ylabel('Transmittance (%)')
     hold on
     h1 = plot([F_5_min F_5_min],[0 100], 'r--');
     h2 = plot([F_10_min F_10_min],[0 100], 'r--');
     set(get(get(h1,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
     set(get(get(h2,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
+    hold on
+    text(F_5_min+(F_5_min/50), 1.5, sprintf('\\Delta\\lambda = %.1fnm',abs(F_10_min-F_5_min)))
     hold on
     ylim([0 yLimMax])
     xlim([xLimMin xLimMax])
@@ -155,10 +177,10 @@ hold on
     lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
     set(lgd, 'fontsize', 20)
     hold on
-    title('Si')
+    title('Silicon Substrate')
     hold on
     xlabel('Wavelength (nm)')
-    ylabel('Reflectance (%)')
+    ylabel('Transmittance (%)')
     hold on
     ylim([0 80])
     xlim([xLimMin xLimMax])
