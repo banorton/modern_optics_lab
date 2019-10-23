@@ -49,10 +49,8 @@ F(4,:) = F(4,:)./Si(4,:);
 F = [(F(1,:).*(F(1,:)>=550));(F(2,:).*(F(1,:)>=550));(F(3,:).*(F(1,:)>=550));(F(4,:).*(F(1,:)>=550))];
 F = [(F(1,:).*(F(1,:)<=1000));(F(2,:).*(F(1,:)<=1000));(F(3,:).*(F(1,:)<=1000));(F(4,:).*(F(1,:)<=1000))];
 F = [F(1,(F(1,:)~=0));F(2,(F(1,:)~=0));F(3,(F(1,:)~=0));F(4,(F(1,:)~=0))];
-F_5_min = F(1,:).*(F(2,:)==min(F(2,:)));
-F_5_min = F_5_min(F_5_min~=0)
-F_10_min = F(1,:).*(F(4,:)==min(F(4,:)));
-F_10_min = F_10_min(F_10_min~=0)
+F_5_min = min(F(2,:));
+F_10_min = min(F(4,:));
 
 %% FIGURES
 xLimMax = 1000;
@@ -100,11 +98,11 @@ hold on
 %SAMPLE B4
 figure(3)
 set(gcf, 'color', 'w')
-plot(B4(1,:), B4(2,:), 'black')
+semilogy(B4(1,:), B4(2,:), 'black')
 hold on
-plot(B4(3,:), B4(4,:), 'cyan')
+semilogy(B4(3,:), B4(4,:), 'cyan')
 hold on
-    lgd = legend('5° AOI', '10° AOI', 'location', 'southeast');
+    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
     set(lgd, 'fontsize', 20)
     hold on
     title('B4')
@@ -112,10 +110,8 @@ hold on
     xlabel('Wavelength (nm)')
     ylabel('Reflectance (%)')
     hold on
-    h1 = plot([B4_5_min B4_5_min],[0 100], 'r--');
-    h2 = plot([B4_10_min B4_10_min],[0 100], 'r--');
-    set(get(get(h1,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
-    set(get(get(h2,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
+    line([B4_10_min],[],'r--')
+    hold on
     hold on
     ylim([0 yLimMax])
     xlim([xLimMin xLimMax])
@@ -124,22 +120,17 @@ hold on
 %SAMPLE F
 figure(4)
 set(gcf, 'color', 'w')
-plot(F(1,:), F(2,:), 'black')
+semilogy(F(1,:), F(2,:), 'black')
 hold on
-plot(F(3,:), F(4,:), 'cyan')
+semilogy(F(3,:), F(4,:), 'cyan')
 hold on
-    lgd = legend('5° AOI', '10° AOI', 'location', 'southeast');
+    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
     set(lgd, 'fontsize', 20)
     hold on
     title('F')
     hold on
     xlabel('Wavelength (nm)')
     ylabel('Reflectance (%)')
-    hold on
-    h1 = plot([F_5_min F_5_min],[0 100], 'r--');
-    h2 = plot([F_10_min F_10_min],[0 100], 'r--');
-    set(get(get(h1,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
-    set(get(get(h2,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
     hold on
     ylim([0 yLimMax])
     xlim([xLimMin xLimMax])
