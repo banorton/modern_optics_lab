@@ -17,8 +17,8 @@ B4 = [b4_5,b4_10]';
 F = [f_5,f_10]';
 Si = [si_5,si_10]';
 
-min = 400;
-max = 1050;
+min = 450;
+max = 1000;
 %% DATA ANALYSIS
 B20(2,:) = B20(2,:)./Si(2,:);
 B20(4,:) = B20(4,:)./Si(4,:);
@@ -63,16 +63,17 @@ F = [F(1,(F(1,:)~=0));F(2,(F(1,:)~=0));F(3,(F(1,:)~=0));F(4,(F(1,:)~=0))];
 %% FIGURES
 xLimMax = max;
 xLimMin = min;
-yLimMax = 1.7;
+yLimMax = 1.2;
 
 %SAMPLE B20
+clf;
 figure(1)
 set(gcf, 'color', 'w')
 plot(B20(1,:), B20(2,:), 'black')
 hold on
-plot(B20(3,:), B20(4,:), 'cyan')
-hold on
-    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
+% plot(B20(3,:), B20(4,:), 'cyan')
+% hold on
+    lgd = legend('5° AOI', '10° AOI', 'location', 'southeast');
     set(lgd, 'fontsize', 20)
     hold on
     title('B20')
@@ -96,9 +97,9 @@ figure(2)
 set(gcf, 'color', 'w')
 plot(B3(1,:), B3(2,:), 'black')
 hold on
-plot(B3(3,:), B3(4,:), 'cyan')
-hold on
-    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
+% plot(B3(3,:), B3(4,:), 'cyan')
+% hold on
+    lgd = legend('5° AOI', '10° AOI', 'location', 'southeast');
     set(lgd, 'fontsize', 20)
     hold on
     title('B3')
@@ -122,8 +123,8 @@ figure(3)
 set(gcf, 'color', 'w')
 plot(B4(1,:), B4(2,:), 'black')
 hold on
-plot(B4(3,:), B4(4,:), 'cyan')
-hold on
+% plot(B4(3,:), B4(4,:), 'cyan')
+% hold on
     lgd = legend('5° AOI', '10° AOI', 'location', 'southeast');
     set(lgd, 'fontsize', 20)
     hold on
@@ -148,8 +149,8 @@ figure(4)
 set(gcf, 'color', 'w')
 plot(F(1,:), F(2,:), 'black')
 hold on
-plot(F(3,:), F(4,:), 'cyan')
-hold on
+% plot(F(3,:), F(4,:), 'cyan')
+% hold on
     lgd = legend('5° AOI', '10° AOI', 'location', 'southeast');
     set(lgd, 'fontsize', 20)
     hold on
@@ -165,7 +166,7 @@ hold on
 %     hold on
 %     text(F_5_min+(F_5_min/50), 1.5, sprintf('\\Delta\\lambda = %.1fnm',abs(F_10_min-F_5_min)))
 %     hold on
-    ylim([0 yLimMax])
+    ylim([.001 yLimMax])
     xlim([xLimMin xLimMax])
     hold off
 
@@ -176,7 +177,7 @@ plot(Si(1,:), Si(2,:), 'black')
 hold on
 plot(Si(3,:), Si(4,:), 'cyan')
 hold on
-    lgd = legend('5° AOI', '10° AOI', 'location', 'northwest');
+    lgd = legend('5° AOI', '10° AOI', 'location', 'southeast');
     set(lgd, 'fontsize', 20)
     hold on
     title('Silicon Substrate')

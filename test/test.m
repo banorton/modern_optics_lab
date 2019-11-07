@@ -1,7 +1,11 @@
 clc;clear;clf;
 
 %INPUTS
-phi = deg2rad(80);
+sample = true;
+polarizeY = false;
+polarizeX = false;
+phi = deg2rad(30)+deg2rad(45);
+
 smoothness_of_animation = .03;
 speed_of_animation = .001;
 time_length = 4;
@@ -17,8 +21,22 @@ i = 1;
 for t = 0:smoothness_of_animation:time_length
     
     clf;
-    y = Amplitude.*sin(omega1.*t+phi);
-    x = Amplitude.*cos(omega2.*t);
+    if sample == true
+        y = (.9)*Amplitude.*sin(omega1.*t+phi);
+        x = (.9)*Amplitude.*cos(omega2.*t);
+    else
+        y = Amplitude.*sin(omega1.*t+phi);
+        x = Amplitude.*cos(omega2.*t);
+    end
+    
+    
+    if polarizeY == true
+        x = 0;
+    end
+    
+    if polarizeX == true
+        y = 0;
+    end
     
     path(i, 1) = x;
     path(i, 2) = y;
