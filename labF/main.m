@@ -37,19 +37,19 @@ X4mo25s2 = X4m_obj25_side2;
 %% DECLARING CONSTANTS
 halfrot = .5; %millimeters
 
-X4m_obj10_side1_start = 33.29;
-X4m_obj25_side1_start = 3.86;
-X4m_obj10_side2_start = 9.14;
-X4m_obj25_side2_start = 0.94;
-X2m_obj25_side1_start = 5.93;
-X2m_obj25_side2_start = 7.69;
+X4mo10s1start = 33.29;
+X4mo25s1start = 3.86;
+X4mo10s2start = 9.14;
+X4mo25s2start = 0.94;
+X2mo25s1start = 5.93;
+X2mo25s2start = 7.69;
 
-X4mo10s1dist = ( X4m_obj10_side1_start : (2*halfrot) : X4m_obj10_side1_start+(2*halfrot*(numel(X4m_obj10_side1))-1) );
-X4mo25s1dist = ( X4m_obj25_side1_start : (halfrot) : X4m_obj25_side1_start+(halfrot*(numel(X4m_obj25_side1))-1) )';
-X4mo10s2dist = ( X4m_obj10_side2_start : (halfrot) : X4m_obj10_side2_start+(halfrot*(numel(X4m_obj10_side2))-1) )';
-X4mo25s2dist = ( X4m_obj25_side2_start : (halfrot) : X4m_obj25_side2_start+(halfrot*(numel(X4m_obj25_side2))-1) )';
-X2mo25s1dist = ( X2m_obj25_side1_start : (halfrot) : X2m_obj25_side1_start+(halfrot*(numel(X2m_obj25_side1))-1) )';
-X2mo25s2dist = ( X2m_obj25_side2_start : (halfrot) : X2m_obj25_side2_start+(halfrot*(numel(X2m_obj25_side2))-1) )';
+X4mo10s1dist = ( X4mo10s1start : (2*halfrot) : X4mo10s1start+(2*halfrot*(numel(X4m_obj10_side1)-1)) )';
+X4mo25s1dist = ( X4mo25s1start : (halfrot) : X4mo25s1start+(halfrot*(numel(X4m_obj25_side1)-1)) )';
+X4mo10s2dist = ( X4mo10s2start : (halfrot) : X4mo10s2start+(halfrot*(numel(X4m_obj10_side2)-1)) )';
+X4mo25s2dist = ( X4mo25s2start : (halfrot) : X4mo25s2start+(halfrot*(numel(X4m_obj25_side2)-1)) )';
+X2mo25s1dist = ( X2mo25s1start : (halfrot) : X2mo25s1start+(halfrot*(numel(X2m_obj25_side1)-1)) )';
+X2mo25s2dist = ( X2mo25s2start : (halfrot) : X2mo25s2start+(halfrot*(numel(X2m_obj25_side2)-1)) )';
 
 %% PLOTTING DATA
 
@@ -65,7 +65,7 @@ plot(sin(X2ma2(:,1).*(pi/180)),X2ma2(:,2),'blacko','handlevisibility','off')
 hold on
     legend('Side 1','Side2')
     title('2m Cable')
-    xlabel('Angle (°)')
+    xlabel('sin(Angle)')
     ylabel('Power (\muW)')
 hold off
 %4m CABLE NA
@@ -80,20 +80,71 @@ plot(sin(X4ma2(:,1).*(pi/180)),X4ma2(:,2),'blacko','handlevisibility','off')
 hold on
     legend('Side 1','Side2')
     title('4m Cable')
-    xlabel('Angle (°)')
+    xlabel('sin(Angle)')
     ylabel('Power (\muW)')
 hold off
 
 %2m CABLE COUPLING EFFICIENCY
 figure(3)
-plot(X4mo10s1dist,X4mo10s1,'b-')
+suptitle('2m Cable CE')
+subplot(1,2,1)
+plot(X2mo25s1dist,X2mo25s1,'blacko','handlevisibility','off')
 hold on
-    legend('Side 1','Side2')
-    title('4m Cable')
-    xlabel('Angle (°)')
+plot(X2mo25s1dist,X2mo25s1,'black-')
+hold on
+    title('Side 1 10x')
+    xlabel('Distance (mm)')
+    ylabel('Power (\muW)')
+hold off
+subplot(1,2,2)
+plot(X2mo25s2dist,X2mo25s2,'blacko','handlevisibility','off')
+hold on
+plot(X2mo25s2dist,X2mo25s2,'black-')
+hold on
+    title('Side 2 10x')
+    xlabel('Distance (mm)')
     ylabel('Power (\muW)')
 hold off
 
+%4m CABLE COUPLING EFFICIENCY
+figure(4)
+suptitle('4m Cable CE')
+subplot(2,2,1)
+plot(X4mo10s1dist,X4mo10s1,'blacko','handlevisibility','off')
+hold on
+plot(X4mo10s1dist,X4mo10s1,'black-')
+hold on
+    title('Side 1 10x')
+    xlabel('Distance (mm)')
+    ylabel('Power (\muW)')
+hold off
+subplot(2,2,2)
+plot(X4mo10s2dist,X4mo10s2,'blacko','handlevisibility','off')
+hold on
+plot(X4mo10s2dist,X4mo10s2,'black-')
+hold on
+    title('Side 2 10x')
+    xlabel('Distance (mm)')
+    ylabel('Power (\muW)')
+hold off
+subplot(2,2,3)
+plot(X4mo25s1dist,X4mo25s1,'blacko','handlevisibility','off')
+hold on
+plot(X4mo25s1dist,X4mo25s1,'black-')
+hold on
+    title('Side 1 25x')
+    xlabel('Distance (mm)')
+    ylabel('Power (\muW)')
+hold off
+subplot(2,2,4)
+plot(X4mo25s2dist,X4mo25s2,'blacko','handlevisibility','off')
+hold on
+plot(X4mo25s2dist,X4mo25s2,'black-')
+hold on
+    title('Side 2 25x')
+    xlabel('Distance (mm)')
+    ylabel('Power (\muW)')
+hold off
 
 
 
