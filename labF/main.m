@@ -55,6 +55,7 @@ X2mo25s2dist = ( X2mo25s2start : (halfrot) : X2mo25s2start+(halfrot*(numel(X2m_o
 
 %2m CABLE NA
 figure(1)
+set(gcf, 'color', 'w')
 plot(sin(X2ma1(:,1).*(pi/180)),X2ma1(:,2),'b-')
 hold on
 plot(sin(X2ma1(:,1).*(pi/180)),X2ma1(:,2),'bo','handlevisibility','off')
@@ -70,6 +71,7 @@ hold on
 hold off
 %4m CABLE NA
 figure(2)
+set(gcf, 'color', 'w')
 plot(sin(X4ma1(:,1).*(pi/180)),X4ma1(:,2),'b-')
 hold on
 plot(sin(X4ma1(:,1).*(pi/180)),X4ma1(:,2),'bo','handlevisibility','off')
@@ -86,6 +88,7 @@ hold off
 
 %2m CABLE COUPLING EFFICIENCY
 figure(3)
+set(gcf, 'color', 'w')
 suptitle('2m Cable CE')
 subplot(1,2,1)
 plot(X2mo25s1dist,X2mo25s1,'blacko','handlevisibility','off')
@@ -108,6 +111,7 @@ hold off
 
 %4m CABLE COUPLING EFFICIENCY
 figure(4)
+set(gcf, 'color', 'w')
 suptitle('4m Cable CE')
 subplot(2,2,1)
 plot(X4mo10s1dist,X4mo10s1,'blacko','handlevisibility','off')
