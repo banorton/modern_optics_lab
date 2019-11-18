@@ -1,10 +1,13 @@
 clc;clear;clf;
-
 %% LOADING DATA
 Files = dir('C:\Users\brandon\src\modernoptics\labG\data');
 for i=3:length(Files)
     load(fullfile('..','labG','data',Files(i).name));
 end
+
+%% ANALYZING DATA
+
+%SINGLE SLIT DATA
 s20g1 = [abs(single20microgreen1(:,1)).*100,single20microgreen1(:,2)];
 s20g2 = [abs(single20microgreen2(:,1)).*100,single20microgreen2(:,2)];
 s20g3 = [abs(single20microgreen3(:,1)).*100,single20microgreen3(:,2)];
@@ -82,88 +85,157 @@ while i<40
 
 i = i+1;
 end
-
-%% ANALYZING DATA
-
-%SINGLE SLIT DATA
 %S20G
 tempStartX = 6.5;
 tempEndX = 10;
 tempMinY = 0;
 tempMaxY = 10;
-s20g1w = widthFind(s20g1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20g2w = widthFind(s20g2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20g3w = widthFind(s20g3, tempStartX, tempEndX, tempMinY, tempMaxY);
+s20g1w = widthFind(s20g1, tempStartX, tempEndX, tempMinY, tempMaxY)
+s20g2w = widthFind(s20g2, tempStartX, tempEndX, tempMinY, tempMaxY)
+s20g3w = widthFind(s20g3, tempStartX, tempEndX, tempMinY, tempMaxY)
 s20gw = (s20g1w+s20g2w+s20g3w)/3
 %S20R
 tempStartX = 7;
 tempEndX = 10.5;
 tempMinY = 0;
 tempMaxY = 10;
-s20r1w = widthFind(s20r1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20r2w = widthFind(s20r2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20r3w = widthFind(s20r3, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20rw = (s20r1w+s20r2w+s20r3w)/3
+s20r1min = [s20r1(:,1),s20r1(:,2).*islocalmin(s20r1(:,2))];
+s20r1min( (s20r1min(:,1) < tempStartX) , : ) = [];
+s20r1min( (s20r1min(:,1) > tempEndX) , : ) = [];
+s20r1min(s20r1min(:,2)==0,:) = [];
+s20r1min(s20r1min(:,2)>tempMaxY,:) = [];
+s20r1min(s20r1min(:,2)<tempMinY,:) = [];
+s20r1width = s20r1min(2,1)-s20r1min(1,1);
+s20r2min = [s20r2(:,1),s20r2(:,2).*islocalmin(s20r2(:,2))];
+s20r2min( (s20r2min(:,1) < tempStartX) , : ) = [];
+s20r2min( (s20r2min(:,1) > tempEndX) , : ) = [];
+s20r2min(s20r2min(:,2)==0,:) = [];
+s20r2min(s20r2min(:,2)>tempMaxY,:) = [];
+s20r2min(s20r2min(:,2)<tempMinY,:) = [];
+s20r2width = s20r2min(2,1)-s20r2min(1,1);
+s20r3min = [s20r3(:,1),s20r3(:,2).*islocalmin(s20r3(:,2))];
+s20r3min( (s20r3min(:,1) < tempStartX) , : ) = [];
+s20r3min( (s20r3min(:,1) > tempEndX) , : ) = [];
+s20r3min(s20r3min(:,2)==0,:) = [];
+s20r3min(s20r3min(:,2)>tempMaxY,:) = [];
+s20r3min(s20r3min(:,2)<tempMinY,:) = [];
+s20r3width = s20r3min(2,1)-s20r3min(1,1);
+s20rw = (s20r1width+s20r2width+s20r3width)/3;
+
 %S40G
 tempStartX = 7.4;
 tempEndX = 9;
 tempMinY = 10;
 tempMaxY = 50;
-s40g1w = widthFind(s40g1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s40g2w = widthFind(s40g2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s40g3w = widthFind(s40g3, tempStartX, tempEndX, tempMinY, tempMaxY);
-s40gw = (s40g1w+s40g2w+s40g3w)/3
+s40g1min = [s40g1(:,1),s40g1(:,2).*islocalmin(s40g1(:,2))];
+s40g1min( (s40g1min(:,1) < tempStartX) , : ) = [];
+s40g1min( (s40g1min(:,1) > tempEndX) , : ) = [];
+s40g1min(s40g1min(:,2)==0,:) = [];
+s40g1min(s40g1min(:,2)>tempMaxY,:) = [];
+s40g1min(s40g1min(:,2)<tempMinY,:) = [];
+s40g1width = s40g1min(2,1)-s40g1min(1,1);
+s40g2min = [s40g2(:,1),s40g2(:,2).*islocalmin(s40g2(:,2))];
+s40g2min( (s40g2min(:,1) < tempStartX) , : ) = [];
+s40g2min( (s40g2min(:,1) > tempEndX) , : ) = [];
+s40g2min(s40g2min(:,2)==0,:) = [];
+s40g2min(s40g2min(:,2)>tempMaxY,:) = [];
+s40g2min(s40g2min(:,2)<tempMinY,:) = [];
+s40g2width = s40g2min(2,1)-s40g2min(1,1);
+s40g3min = [s40g3(:,1),s40g3(:,2).*islocalmin(s40g3(:,2))];
+s40g3min( (s40g3min(:,1) < tempStartX) , : ) = [];
+s40g3min( (s40g3min(:,1) > tempEndX) , : ) = [];
+s40g3min(s40g3min(:,2)==0,:) = [];
+s40g3min(s40g3min(:,2)>tempMaxY,:) = [];
+s40g3min(s40g3min(:,2)<tempMinY,:) = [];
+s40g3width = s40g3min(2,1)-s40g3min(1,1);
+s40gw = (s40g1width+s40g2width+s40g3width)/3;
 %S40R
 tempStartX = 7;
 tempEndX = 10;
 tempMinY = 5;
 tempMaxY = 30;
-s40r1w = widthFind(s40r1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s40r2w = widthFind(s40r2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s40r3w = widthFind(s40r3, tempStartX, tempEndX, tempMinY, tempMaxY);
-s40rw = (s40r1w+s40r2w+s40r3w)/3
+s40r1min = [s40r1(:,1),s40r1(:,2).*islocalmin(s40r1(:,2))];
+s40r1min( (s40r1min(:,1) < tempStartX) , : ) = [];
+s40r1min( (s40r1min(:,1) > tempEndX) , : ) = [];
+s40r1min(s40r1min(:,2)==0,:) = [];
+s40r1min(s40r1min(:,2)>tempMaxY,:) = [];
+s40r1min(s40r1min(:,2)<tempMinY,:) = [];
+s40r1width = s40r1min(2,1)-s40r1min(1,1);
+s40r2min = [s40r2(:,1),s40r2(:,2).*islocalmin(s40r2(:,2))];
+s40r2min( (s40r2min(:,1) < tempStartX) , : ) = [];
+s40r2min( (s40r2min(:,1) > tempEndX) , : ) = [];
+s40r2min(s40r2min(:,2)==0,:) = [];
+s40r2min(s40r2min(:,2)>tempMaxY,:) = [];
+s40r2min(s40r2min(:,2)<tempMinY,:) = [];
+s40r2width = s40r2min(2,1)-s40r2min(1,1);
+s40r3min = [s40r3(:,1),s40r3(:,2).*islocalmin(s40r3(:,2))];
+s40r3min( (s40r3min(:,1) < tempStartX) , : ) = [];
+s40r3min( (s40r3min(:,1) > tempEndX) , : ) = [];
+s40r3min(s40r3min(:,2)==0,:) = [];
+s40r3min(s40r3min(:,2)>tempMaxY,:) = [];
+s40r3min(s40r3min(:,2)<tempMinY,:) = [];
+s40r3width = s40r3min(2,1)-s40r3min(1,1);
+s40rw = (s40r1width+s40r2width+s40r3width)/3;
+
 %S80G
 tempStartX = 7.8;
 tempEndX = 8.6;
 tempMinY = 5;
 tempMaxY = 20;
-s80g1w = widthFind(s80g1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s80g2w = widthFind(s80g2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s80g3w = widthFind(s80g3, tempStartX, tempEndX, tempMinY, tempMaxY);
-s80gw = (s80g1w+s80g2w+s80g3w)/3
+s80g1min = [s80g1(:,1),s80g1(:,2).*islocalmin(s80g1(:,2))];
+s80g1min( (s80g1min(:,1) < tempStartX) , : ) = [];
+s80g1min( (s80g1min(:,1) > tempEndX) , : ) = [];
+s80g1min(s80g1min(:,2)==0,:) = [];
+s80g1min(s80g1min(:,2)>tempMaxY,:) = [];
+s80g1min(s80g1min(:,2)<tempMinY,:) = [];
+s80g1width = s80g1min(2,1)-s80g1min(1,1);
+s80g2min = [s80g2(:,1),s80g2(:,2).*islocalmin(s80g2(:,2))];
+s80g2min( (s80g2min(:,1) < tempStartX) , : ) = [];
+s80g2min( (s80g2min(:,1) > tempEndX) , : ) = [];
+s80g2min(s80g2min(:,2)==0,:) = [];
+s80g2min(s80g2min(:,2)>tempMaxY,:) = [];
+s80g2min(s80g2min(:,2)<tempMinY,:) = [];
+s80g2width = s80g2min(2,1)-s80g2min(1,1);
+s80g3min = [s80g3(:,1),s80g3(:,2).*islocalmin(s80g3(:,2))];
+s80g3min( (s80g3min(:,1) < tempStartX) , : ) = [];
+s80g3min( (s80g3min(:,1) > tempEndX) , : ) = [];
+s80g3min(s80g3min(:,2)==0,:) = [];
+s80g3min(s80g3min(:,2)>tempMaxY,:) = [];
+s80g3min(s80g3min(:,2)<tempMinY,:) = [];
+s80g3width = s80g3min(2,1)-s80g3min(1,1);
+s80gw = (s80g1width+s80g2width+s80g3width)/3;
 %S80R
 tempStartX = 8;
 tempEndX = 8.9;
 tempMinY = 5;
 tempMaxY = 20;
-s80r1w = widthFind(s80r1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s80r2w = widthFind(s80r2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s80r3w = widthFind(s80r3, tempStartX, tempEndX, tempMinY, tempMaxY);
-s80rw = (s80r1w+s80r2w+s80r3w)/3
-%S160G
-tempStartX = 5;
-tempEndX = 10;
-tempMinY = 0;
-tempMaxY = 15;
-s160g1w = widthFind(s160g1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s160g2w = widthFind(s160g2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s160g3w = widthFind(s160g3, tempStartX, tempEndX, tempMinY, tempMaxY);
-s160gw = (s160g1w+s160g2w+s160g3w)/3
-%S160R
-tempStartX = 0;
-tempEndX = 100;
-tempMinY = 0;
-tempMaxY = 100;
-s160r1w = widthFind(s160r1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s160r2w = widthFind(s160r2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s160r3w = widthFind(s160r3, tempStartX, tempEndX, tempMinY, tempMaxY);
-s160rw = (s160r1w+s160r2w+s160r3w)/3
+s80r1min = [s80r1(:,1),s80r1(:,2).*islocalmin(s80r1(:,2))];
+s80r1min( (s80r1min(:,1) < tempStartX) , : ) = [];
+s80r1min( (s80r1min(:,1) > tempEndX) , : ) = [];
+s80r1min(s80r1min(:,2)==0,:) = [];
+s80r1min(s80r1min(:,2)>tempMaxY,:) = [];
+s80r1min(s80r1min(:,2)<tempMinY,:) = [];
+s80r1width = s80r1min(2,1)-s80r1min(1,1);
+s80r2min = [s80r2(:,1),s80r2(:,2).*islocalmin(s80r2(:,2))];
+s80r2min( (s80r2min(:,1) < tempStartX) , : ) = [];
+s80r2min( (s80r2min(:,1) > tempEndX) , : ) = [];
+s80r2min(s80r2min(:,2)==0,:) = [];
+s80r2min(s80r2min(:,2)>tempMaxY,:) = [];
+s80r2min(s80r2min(:,2)<tempMinY,:) = [];
+s80r2width = s80r2min(2,1)-s80r2min(1,1);
+s80r3min = [s80r3(:,1),s80r3(:,2).*islocalmin(s80r3(:,2))];
+s80r3min( (s80r3min(:,1) < tempStartX) , : ) = [];
+s80r3min( (s80r3min(:,1) > tempEndX) , : ) = [];
+s80r3min(s80r3min(:,2)==0,:) = [];
+s80r3min(s80r3min(:,2)>tempMaxY,:) = [];
+s80r3min(s80r3min(:,2)<tempMinY,:) = [];
+s80r3width = s80r3min(2,1)-s80r3min(1,1);
+s80rw = (s80r1width+s80r2width+s80r3width)/3;
 
 %% PLOTTING DATA
 
 %SINGLE SLIT DATA
-%S20
-f1 = figure(1);
+figure(1)
 subplot(1,2,1)
 hold on
 plot(s20g1(:,1),s20g1(:,2),'black')
@@ -188,8 +260,8 @@ plot(s20r3(:,1),s20r3(:,2),'c')
     ylabel('Transmission (%)')
 grid on
 hold off
-%S40
-f2 = figure(2);
+
+figure(2)
 subplot(1,2,1)
 hold on
 plot(s40g1(:,1),s40g1(:,2),'black')
@@ -214,8 +286,8 @@ plot(s40r3(:,1),s40r3(:,2),'c')
     ylabel('Transmission (%)')
 grid on
 hold off
-%S80
-f3 = figure(3);
+
+figure(3)
 subplot(1,2,1)
 hold on
 plot(s80g1(:,1),s80g1(:,2),'black')
@@ -223,7 +295,7 @@ plot(s80g2(:,1),s80g2(:,2),'b')
 plot(s80g3(:,1),s80g3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
     title('Single Slit a=80\mum green laser')
-    xlim([7 9.5])
+    xlim([7 9])
     xlabel('Distance (mm)')
     ylabel('Transmission (%)')
 grid on
@@ -235,39 +307,8 @@ plot(s80r2(:,1),s80r2(:,2),'b')
 plot(s80r3(:,1),s80r3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
     title('Single Slit a=80\mum red laser')
-    xlim([7 9.8])
+    xlim([7 9])
     xlabel('Distance (mm)')
     ylabel('Transmission (%)')
 grid on
 hold off
-%S160
-f4 = figure(4);
-subplot(1,2,1)
-hold on
-plot(s160g1(:,1),s160g1(:,2),'black')
-plot(s160g2(:,1),s160g2(:,2),'b')
-plot(s160g3(:,1),s160g3(:,2),'c')
-    legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=160\mum green laser')
-    xlim([7.9 8.45])
-    xlabel('Distance (mm)')
-    ylabel('Transmission (%)')
-grid on
-hold off
-subplot(1,2,2)
-hold on
-plot(s160r1(:,1),s160r1(:,2),'black')
-plot(s160r2(:,1),s160r2(:,2),'b')
-plot(s160r3(:,1),s160r3(:,2),'c')
-    legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=160\mum red laser')
-    xlim([8.25 8.75])
-    xlabel('Distance (mm)')
-    ylabel('Transmission (%)')
-grid on
-hold off
-
-f1.Color = 'WHITE';
-f2.Color = 'WHITE';
-f3.Color = 'WHITE';
-f4.Color = 'WHITE';
