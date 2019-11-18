@@ -196,10 +196,10 @@ s40r3width = s40r3min(2,1)-s40r3min(1,1);
 s40rw = (s40r1width+s40r2width+s40r3width)/3
 
 %S80G
-tempStartX = 5;
-tempEndX = 11;
-tempMinY = 0;
-tempMaxY = 100;
+tempStartX = 7.8;
+tempEndX = 8.6;
+tempMinY = 5;
+tempMaxY = 20;
 s80g1min = [s80g1(:,1),s80g1(:,2).*islocalmin(s80g1(:,2))];
 s80g1min( (s80g1min(:,1) < tempStartX) , : ) = [];
 s80g1min( (s80g1min(:,1) > tempEndX) , : ) = [];
@@ -223,10 +223,10 @@ s80g3min(s80g3min(:,2)<tempMinY,:) = [];
 s80g3width = s80g3min(2,1)-s80g3min(1,1);
 s80gw = (s80g1width+s80g2width+s80g3width)/3
 %S80R
-tempStartX = 5;
-tempEndX = 11;
-tempMinY = 0;
-tempMaxY = 100;
+tempStartX = 8;
+tempEndX = 8.9;
+tempMinY = 5;
+tempMaxY = 20;
 s80r1min = [s80r1(:,1),s80r1(:,2).*islocalmin(s80r1(:,2))];
 s80r1min( (s80r1min(:,1) < tempStartX) , : ) = [];
 s80r1min( (s80r1min(:,1) > tempEndX) , : ) = [];
