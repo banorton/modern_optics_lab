@@ -245,8 +245,6 @@ start = 480;
 finish = 980;
 samplerate = 40;
 
-
-
 mask = zeros(1,numel(sample_01));
 stepsize = round(numel(sample_01)/samplerate);
 for i = start:stepsize:numel(sample_01)

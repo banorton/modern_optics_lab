@@ -95,7 +95,7 @@ plot(X2mo25s1dist,X2mo25s1,'blacko','handlevisibility','off')
 hold on
 plot(X2mo25s1dist,X2mo25s1,'black-')
 hold on
-    title('Side 1 10x')
+    title('a) Side 1 10x')
     xlabel('Distance (mm)')
     ylabel('Power (\muW)')
 hold off
@@ -104,7 +104,7 @@ plot(X2mo25s2dist,X2mo25s2,'blacko','handlevisibility','off')
 hold on
 plot(X2mo25s2dist,X2mo25s2,'black-')
 hold on
-    title('Side 2 10x')
+    title('b) Side 2 10x')
     xlabel('Distance (mm)')
     ylabel('Power (\muW)')
 hold off
@@ -118,7 +118,7 @@ plot(X4mo10s1dist,X4mo10s1,'blacko','handlevisibility','off')
 hold on
 plot(X4mo10s1dist,X4mo10s1,'black-')
 hold on
-    title('Side 1 10x')
+    title('a) Side 1 10x')
     xlabel('Distance (mm)')
     ylabel('Power (\muW)')
 hold off
@@ -127,7 +127,7 @@ plot(X4mo10s2dist,X4mo10s2,'blacko','handlevisibility','off')
 hold on
 plot(X4mo10s2dist,X4mo10s2,'black-')
 hold on
-    title('Side 2 10x')
+    title('b) Side 2 10x')
     xlabel('Distance (mm)')
     ylabel('Power (\muW)')
 hold off
@@ -136,20 +136,22 @@ plot(X4mo25s1dist,X4mo25s1,'blacko','handlevisibility','off')
 hold on
 plot(X4mo25s1dist,X4mo25s1,'black-')
 hold on
-    title('Side 1 25x')
+    title('c) Side 1 25x')
     xlabel('Distance (mm)')
     ylabel('Power (\muW)')
 hold off
 subplot(2,2,4)
-plot(X4mo25s2dist,X4mo25s2,'blacko','handlevisibility','off')
+semilogy(X4mo25s2dist,X4mo25s2,'blacko','handlevisibility','off')
 hold on
-plot(X4mo25s2dist,X4mo25s2,'black-')
+semilogy(X4mo25s2dist,X4mo25s2,'black-')
 hold on
-    title('Side 2 25x')
+    title('d) Side 2 25x')
     xlabel('Distance (mm)')
     ylabel('Power (\muW)')
 hold off
 
-
-
+P_o = .00816
+P_i = 1.2
+z = .00412
+atencoe = (-10*log(P_o/P_i))/(z)
 
