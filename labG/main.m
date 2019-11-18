@@ -32,7 +32,59 @@ s160g3 = [abs(single160microgreen3(:,1)),single160microgreen3(:,2)];
 s160r1 = [abs(single160microred1(:,1)),single160microred1(:,2)];
 s160r2 = [abs(single160microred2(:,1)),single160microred2(:,2)];
 s160r3 = [abs(single160microred3(:,1)),single160microred3(:,2)];
+while i<40
 
+    s20g1(:,1) = smooth(s20g1(:,1));
+    s20g1(:,2) = smooth(s20g1(:,2));
+    s20g2(:,1) = smooth(s20g2(:,1));
+    s20g2(:,2) = smooth(s20g2(:,2));
+    s20g3(:,1) = smooth(s20g3(:,1));
+    s20g3(:,2) = smooth(s20g3(:,2));
+    s20r1(:,1) = smooth(s20r1(:,1));
+    s20r1(:,2) = smooth(s20r1(:,2));
+    s20r2(:,1) = smooth(s20r2(:,1));
+    s20r2(:,2) = smooth(s20r2(:,2));
+    s20r3(:,1) = smooth(s20r3(:,1));
+    s20r3(:,2) = smooth(s20r3(:,2));
+    s40g1(:,1) = smooth(s40g1(:,1));
+    s40g1(:,2) = smooth(s40g1(:,2));
+    s40g2(:,1) = smooth(s40g2(:,1));
+    s40g2(:,2) = smooth(s40g2(:,2));
+    s40g3(:,1) = smooth(s40g3(:,1));
+    s40g3(:,2) = smooth(s40g3(:,2));
+    s40r1(:,1) = smooth(s40r1(:,1));
+    s40r1(:,2) = smooth(s40r1(:,2));
+    s40r2(:,1) = smooth(s40r2(:,1));
+    s40r2(:,2) = smooth(s40r2(:,2));
+    s40r3(:,1) = smooth(s40r3(:,1));
+    s40r3(:,2) = smooth(s40r3(:,2));
+    s80g1(:,1) = smooth(s80g1(:,1));
+    s80g1(:,2) = smooth(s80g1(:,2));
+    s80g2(:,1) = smooth(s80g2(:,1));
+    s80g2(:,2) = smooth(s80g2(:,2));
+    s80g3(:,1) = smooth(s80g3(:,1));
+    s80g3(:,2) = smooth(s80g3(:,2));
+    s80r1(:,1) = smooth(s80r1(:,1));
+    s80r1(:,2) = smooth(s80r1(:,2));
+    s80r2(:,1) = smooth(s80r2(:,1));
+    s80r2(:,2) = smooth(s80r2(:,2));
+    s80r3(:,1) = smooth(s80r3(:,1));
+    s80r3(:,2) = smooth(s80r3(:,2));
+    s160g1(:,1) = smooth(s160g1(:,1));
+    s160g1(:,2) = smooth(s160g1(:,2));
+    s160g2(:,1) = smooth(s160g2(:,1));
+    s160g2(:,2) = smooth(s160g2(:,2));
+    s160g3(:,1) = smooth(s160g3(:,1));
+    s160g3(:,2) = smooth(s160g3(:,2));
+    s160r1(:,1) = smooth(s160r1(:,1));
+    s160r1(:,2) = smooth(s160r1(:,2));
+    s160r2(:,1) = smooth(s160r2(:,1));
+    s160r2(:,2) = smooth(s160r2(:,2));
+    s160r3(:,1) = smooth(s160r3(:,1));
+    s160r3(:,2) = smooth(s160r3(:,2));
+
+i = i+1;
+end
 %S20G
 tempStartX = .065;
 tempEndX = .1;
@@ -45,9 +97,24 @@ s20g1min(s20g1min(:,2)==0,:) = [];
 s20g1min(s20g1min(:,2)>tempMaxY,:) = [];
 s20g1min(s20g1min(:,2)<tempMinY,:) = [];
 s20g1width = s20g1min(2,1)-s20g1min(1,1);
+s20g2min = [s20g2(:,1),s20g2(:,2).*islocalmin(s20g2(:,2))];
+s20g2min( (s20g2min(:,1) < tempStartX) , : ) = [];
+s20g2min( (s20g2min(:,1) > tempEndX) , : ) = [];
+s20g2min(s20g2min(:,2)==0,:) = [];
+s20g2min(s20g2min(:,2)>tempMaxY,:) = [];
+s20g2min(s20g2min(:,2)<tempMinY,:) = [];
+s20g2width = s20g2min(2,1)-s20g2min(1,1);
+s20g3min = [s20g3(:,1),s20g3(:,2).*islocalmin(s20g3(:,2))];
+s20g3min( (s20g3min(:,1) < tempStartX) , : ) = [];
+s20g3min( (s20g3min(:,1) > tempEndX) , : ) = [];
+s20g3min(s20g3min(:,2)==0,:) = [];
+s20g3min(s20g3min(:,2)>tempMaxY,:) = [];
+s20g3min(s20g3min(:,2)<tempMinY,:) = [];
+s20g3width = s20g3min(2,1)-s20g3min(1,1);
+s20gw = (s20g1width+s20g2width+s20g3width)/3
 %S20R
-tempStartX = .065;
-tempEndX = .1;
+tempStartX = .07;
+tempEndX = .105;
 tempMaxY = 10;
 tempMinY = 0;
 s20r1min = [s20r1(:,1),s20r1(:,2).*islocalmin(s20r1(:,2))];
@@ -57,6 +124,75 @@ s20r1min(s20r1min(:,2)==0,:) = [];
 s20r1min(s20r1min(:,2)>tempMaxY,:) = [];
 s20r1min(s20r1min(:,2)<tempMinY,:) = [];
 s20r1width = s20r1min(2,1)-s20r1min(1,1);
+s20r2min = [s20r2(:,1),s20r2(:,2).*islocalmin(s20r2(:,2))];
+s20r2min( (s20r2min(:,1) < tempStartX) , : ) = [];
+s20r2min( (s20r2min(:,1) > tempEndX) , : ) = [];
+s20r2min(s20r2min(:,2)==0,:) = [];
+s20r2min(s20r2min(:,2)>tempMaxY,:) = [];
+s20r2min(s20r2min(:,2)<tempMinY,:) = [];
+s20r2width = s20r2min(2,1)-s20r2min(1,1);
+s20r3min = [s20r3(:,1),s20r3(:,2).*islocalmin(s20r3(:,2))];
+s20r3min( (s20r3min(:,1) < tempStartX) , : ) = [];
+s20r3min( (s20r3min(:,1) > tempEndX) , : ) = [];
+s20r3min(s20r3min(:,2)==0,:) = [];
+s20r3min(s20r3min(:,2)>tempMaxY,:) = [];
+s20r3min(s20r3min(:,2)<tempMinY,:) = [];
+s20r3width = s20r3min(2,1)-s20r3min(1,1);
+s20rw = (s20r1width+s20r2width+s20r3width)/3
+%S20G
+tempStartX = .065;
+tempEndX = .1;
+tempMaxY = 10;
+tempMinY = 0;
+s20g1min = [s20g1(:,1),s20g1(:,2).*islocalmin(s20g1(:,2))];
+s20g1min( (s20g1min(:,1) < tempStartX) , : ) = [];
+s20g1min( (s20g1min(:,1) > tempEndX) , : ) = [];
+s20g1min(s20g1min(:,2)==0,:) = [];
+s20g1min(s20g1min(:,2)>tempMaxY,:) = [];
+s20g1min(s20g1min(:,2)<tempMinY,:) = [];
+s20g1width = s20g1min(2,1)-s20g1min(1,1);
+s20g2min = [s20g2(:,1),s20g2(:,2).*islocalmin(s20g2(:,2))];
+s20g2min( (s20g2min(:,1) < tempStartX) , : ) = [];
+s20g2min( (s20g2min(:,1) > tempEndX) , : ) = [];
+s20g2min(s20g2min(:,2)==0,:) = [];
+s20g2min(s20g2min(:,2)>tempMaxY,:) = [];
+s20g2min(s20g2min(:,2)<tempMinY,:) = [];
+s20g2width = s20g2min(2,1)-s20g2min(1,1);
+s20g3min = [s20g3(:,1),s20g3(:,2).*islocalmin(s20g3(:,2))];
+s20g3min( (s20g3min(:,1) < tempStartX) , : ) = [];
+s20g3min( (s20g3min(:,1) > tempEndX) , : ) = [];
+s20g3min(s20g3min(:,2)==0,:) = [];
+s20g3min(s20g3min(:,2)>tempMaxY,:) = [];
+s20g3min(s20g3min(:,2)<tempMinY,:) = [];
+s20g3width = s20g3min(2,1)-s20g3min(1,1);
+s20gw = (s20g1width+s20g2width+s20g3width)/3
+%S20R
+tempStartX = .07;
+tempEndX = .105;
+tempMaxY = 10;
+tempMinY = 0;
+s20r1min = [s20r1(:,1),s20r1(:,2).*islocalmin(s20r1(:,2))];
+s20r1min( (s20r1min(:,1) < tempStartX) , : ) = [];
+s20r1min( (s20r1min(:,1) > tempEndX) , : ) = [];
+s20r1min(s20r1min(:,2)==0,:) = [];
+s20r1min(s20r1min(:,2)>tempMaxY,:) = [];
+s20r1min(s20r1min(:,2)<tempMinY,:) = [];
+s20r1width = s20r1min(2,1)-s20r1min(1,1);
+s20r2min = [s20r2(:,1),s20r2(:,2).*islocalmin(s20r2(:,2))];
+s20r2min( (s20r2min(:,1) < tempStartX) , : ) = [];
+s20r2min( (s20r2min(:,1) > tempEndX) , : ) = [];
+s20r2min(s20r2min(:,2)==0,:) = [];
+s20r2min(s20r2min(:,2)>tempMaxY,:) = [];
+s20r2min(s20r2min(:,2)<tempMinY,:) = [];
+s20r2width = s20r2min(2,1)-s20r2min(1,1);
+s20r3min = [s20r3(:,1),s20r3(:,2).*islocalmin(s20r3(:,2))];
+s20r3min( (s20r3min(:,1) < tempStartX) , : ) = [];
+s20r3min( (s20r3min(:,1) > tempEndX) , : ) = [];
+s20r3min(s20r3min(:,2)==0,:) = [];
+s20r3min(s20r3min(:,2)>tempMaxY,:) = [];
+s20r3min(s20r3min(:,2)<tempMinY,:) = [];
+s20r3width = s20r3min(2,1)-s20r3min(1,1);
+s20rw = (s20r1width+s20r2width+s20r3width)/3
 
 
 %DOUBLE SLIT DATA
@@ -65,17 +201,26 @@ s20r1width = s20r1min(2,1)-s20r1min(1,1);
 
 %SINGLE SLIT DATA
 figure(1)
+subplot(1,2,1)
 hold on
 plot(s20g1(:,1),s20g1(:,2),'black')
+plot(s20g2(:,1),s20g2(:,2),'b')
+plot(s20g3(:,1),s20g3(:,2),'c')
+    legend('Run 1','Run 2','Run 3')
     title('Single Slit a=20\mum green laser')
-    xlim([.04 .13])
+    xlim([min(s20g1(:,1)) max(s20g1(:,1))])
+    xlabel('Distance (mm)')
+    ylabel('Transmission (%)')
 hold off
-
-figure(2)
+subplot(1,2,2)
 hold on
 plot(s20r1(:,1),s20r1(:,2),'black')
+plot(s20r2(:,1),s20r2(:,2),'b')
+plot(s20r3(:,1),s20r3(:,2),'c')
+    legend('Run 1','Run 2','Run 3')
     title('Single Slit a=20\mum red laser')
-    xlim([.04 .13])
+    xlabel('Distance (mm)')
+    ylabel('Transmission (%)')
 hold off
 
 %DOUBLE SLIT DATA
