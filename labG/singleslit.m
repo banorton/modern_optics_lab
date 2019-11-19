@@ -1,9 +1,9 @@
 clc;clear;clf;
 
 %% LOADING DATA
-Files = dir('C:\Users\brandon\src\modernoptics\labG\data');
+Files = dir('C:\Users\brandon\src\modernoptics\labG\sdata');
 for i=3:length(Files)
-    load(fullfile('..','labG','data',Files(i).name));
+    load(fullfile('..','labG','sdata',Files(i).name));
 end
 s20g1 = [abs(single20microgreen1(:,1)).*100,single20microgreen1(:,2)];
 s20g2 = [abs(single20microgreen2(:,1)).*100,single20microgreen2(:,2)];
@@ -158,6 +158,10 @@ s160r1w = widthFind(s160r1, tempStartX, tempEndX, tempMinY, tempMaxY);
 s160r2w = widthFind(s160r2, tempStartX, tempEndX, tempMinY, tempMaxY);
 s160r3w = widthFind(s160r3, tempStartX, tempEndX, tempMinY, tempMaxY);
 s160rw = (s160r1w+s160r2w+s160r3w)/3
+%FINAL
+slit = [20,40,80,160];
+gw = [s20gw, s40gw, s80gw, s160gw];
+rw = [s20rw, s40rw, s80rw, s160rw];
 
 %% PLOTTING DATA
 
@@ -266,8 +270,24 @@ plot(s160r3(:,1),s160r3(:,2),'c')
     ylabel('Transmission (%)')
 grid on
 hold off
+%FINAL
+f5 = figure(5);
+hold on
+subplot(1,2,1)
+plot(slit,gw)
+    title('Slit Width vs Center Max Width w/ Green Laser')
+    xlabel('Width (mm)')
+    ylabel('Center Max Width (mm)')
+hold off
+subplot(1,2,2)
+plot(slit,rw)
+    title('Slit Width vs Center Max Width w/ Red Laser')
+    xlabel('Width (mm)')
+    ylabel('Center Max Width (mm)')
+hold off
 
 f1.Color = 'WHITE';
 f2.Color = 'WHITE';
 f3.Color = 'WHITE';
 f4.Color = 'WHITE';
+f5.Color = 'WHITE';
