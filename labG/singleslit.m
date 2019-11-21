@@ -271,16 +271,27 @@ plot(s160r3(:,1),s160r3(:,2),'c')
 grid on
 hold off
 %FINAL
+x = 0:1:200;
 f5 = figure(5);
+gw = ((2*(.000000515)*(.3))./gw);
+rw = ((2*(.000000650)*(.3))./rw);
+S1 = polyfit(slit,gw,1);
+S2 = polyfit(slit,rw,1);
+R1 = polyval(S1,x);
+R2 = polyval(S2,x);
 hold on
 subplot(1,2,1)
-plot(slit,gw)
+plot(slit,gw,'black')
+hold on
+plot(x,R1,'b--')
     title('Slit Width vs Center Max Width w/ Green Laser')
     xlabel('Width (mm)')
     ylabel('Center Max Width (mm)')
 hold off
 subplot(1,2,2)
-plot(slit,rw)
+plot(slit,rw,'black')
+hold on
+plot(x,R2,'b--')
     title('Slit Width vs Center Max Width w/ Red Laser')
     xlabel('Width (mm)')
     ylabel('Center Max Width (mm)')
