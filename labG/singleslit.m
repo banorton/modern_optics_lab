@@ -91,9 +91,9 @@ tempStartX = 6.5;
 tempEndX = 10;
 tempMinY = 0;
 tempMaxY = 10;
-s20g1w = widthFind(s20g1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20g2w = widthFind(s20g2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20g3w = widthFind(s20g3, tempStartX, tempEndX, tempMinY, tempMaxY);
+s20g1w = widthFind(s20g1, tempStartX, tempEndX, tempMinY, tempMaxY)
+s20g2w = widthFind(s20g2, tempStartX, tempEndX, tempMinY, tempMaxY)
+s20g3w = widthFind(s20g3, tempStartX, tempEndX, tempMinY, tempMaxY)
 s20gw = (s20g1w+s20g2w+s20g3w)/3
 %S20R
 tempStartX = 7;
@@ -159,7 +159,7 @@ s160r2w = widthFind(s160r2, tempStartX, tempEndX, tempMinY, tempMaxY);
 s160r3w = widthFind(s160r3, tempStartX, tempEndX, tempMinY, tempMaxY);
 s160rw = (s160r1w+s160r2w+s160r3w)/3
 %FINAL
-slit = [20,40,80,160];
+slit = [.02,.04,.08,.16];
 gw = [s20gw, s40gw, s80gw, s160gw];
 rw = [s20rw, s40rw, s80rw, s160rw];
 
@@ -174,11 +174,11 @@ plot(s20g1(:,1),s20g1(:,2),'black')
 plot(s20g2(:,1),s20g2(:,2),'b')
 plot(s20g3(:,1),s20g3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=20\mum green laser')
+    title('Single Slit a=200\mum green laser')
     xlim([min(s20g1(:,1)) max(s20g1(:,1))])
-    xlabel('Distance (mm)')
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
-    grid on
+    grid off
 hold off
 subplot(1,2,2)
 hold on
@@ -186,11 +186,11 @@ plot(s20r1(:,1),s20r1(:,2),'black')
 plot(s20r2(:,1),s20r2(:,2),'b')
 plot(s20r3(:,1),s20r3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=20\mum red laser')
+    title('Single Slit a=200\mum red laser')
     xlim([min(s20r1(:,1)) max(s20r1(:,1))])
-    xlabel('Distance (mm)')
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
-grid on
+grid off
 hold off
 %S40
 f2 = figure(2);
@@ -200,11 +200,11 @@ plot(s40g1(:,1),s40g1(:,2),'black')
 plot(s40g2(:,1),s40g2(:,2),'b')
 plot(s40g3(:,1),s40g3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=40\mum green laser')
+    title('Single Slit a=400\mum green laser')
     xlim([min(s40g1(:,1)) max(s40g1(:,1))])
-    xlabel('Distance (mm)')
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
-grid on
+grid off
 hold off
 subplot(1,2,2)
 hold on
@@ -212,11 +212,11 @@ plot(s40r1(:,1),s40r1(:,2),'black')
 plot(s40r2(:,1),s40r2(:,2),'b')
 plot(s40r3(:,1),s40r3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=40\mum red laser')
+    title('Single Slit a=400\mum red laser')
     xlim([min(s40r1(:,1)) max(s40r1(:,1))])
-    xlabel('Distance (mm)')
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
-grid on
+grid off
 hold off
 %S80
 f3 = figure(3);
@@ -226,11 +226,11 @@ plot(s80g1(:,1),s80g1(:,2),'black')
 plot(s80g2(:,1),s80g2(:,2),'b')
 plot(s80g3(:,1),s80g3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=80\mum green laser')
+    title('Single Slit a=800\mum green laser')
     xlim([7 9.5])
-    xlabel('Distance (mm)')
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
-grid on
+grid off
 hold off
 subplot(1,2,2)
 hold on
@@ -238,11 +238,11 @@ plot(s80r1(:,1),s80r1(:,2),'black')
 plot(s80r2(:,1),s80r2(:,2),'b')
 plot(s80r3(:,1),s80r3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=80\mum red laser')
+    title('Single Slit a=800\mum red laser')
     xlim([7 9.8])
-    xlabel('Distance (mm)')
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
-grid on
+grid off
 hold off
 %S160
 f4 = figure(4);
@@ -252,11 +252,11 @@ plot(s160g1(:,1),s160g1(:,2),'black')
 plot(s160g2(:,1),s160g2(:,2),'b')
 plot(s160g3(:,1),s160g3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=160\mum green laser')
-    xlim([7.9 8.45])
-    xlabel('Distance (mm)')
+    title('Single Slit a=1600\mum green laser')
+    xlim([7.6 8.8])
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
-grid on
+grid off
 hold off
 subplot(1,2,2)
 hold on
@@ -264,17 +264,18 @@ plot(s160r1(:,1),s160r1(:,2),'black')
 plot(s160r2(:,1),s160r2(:,2),'b')
 plot(s160r3(:,1),s160r3(:,2),'c')
     legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=160\mum red laser')
-    xlim([8.25 8.75])
-    xlabel('Distance (mm)')
+    title('Single Slit a=1600\mum red laser')
+    xlim([7.8 9.15])
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
-grid on
+grid off
 hold off
 %FINAL
-x = 0:1:200;
+x = 0:.001:.2;
 f5 = figure(5);
-gw = ((2*(.000000515)*(.3))./gw);
-rw = ((2*(.000000650)*(.3))./rw);
+a = 1/(.3)
+gw = 1./gw;
+rw = 1./rw;
 S1 = polyfit(slit,gw,1);
 S2 = polyfit(slit,rw,1);
 R1 = polyval(S1,x);
@@ -284,17 +285,17 @@ subplot(1,2,1)
 plot(slit,gw,'black')
 hold on
 plot(x,R1,'b--')
-    title('Slit Width vs Center Max Width w/ Green Laser')
+    title('Green Laser')
     xlabel('Width (mm)')
-    ylabel('Center Max Width (mm)')
+    ylabel('1/a (cm^{-1})')
 hold off
 subplot(1,2,2)
 plot(slit,rw,'black')
 hold on
 plot(x,R2,'b--')
-    title('Slit Width vs Center Max Width w/ Red Laser')
+    title('Red Laser')
     xlabel('Width (mm)')
-    ylabel('Center Max Width (mm)')
+    ylabel('1/a (cm^{-1})')
 hold off
 
 f1.Color = 'WHITE';

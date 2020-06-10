@@ -1,0 +1,22 @@
+DOUBLE SLIT
+This figure shows the data for a double slit hit with a green and red laser. The peaks are used to plot a peak position against order of maxima plot.
+
+This figure shows the data for a double slit hit with a green and red laser. The peaks are used to plot a peak position against order of maxima plot.
+
+This figure shows the data for a double slit hit with a green and red laser. The peaks are used to plot a peak position against order of maxima plot.
+
+This figure shows the data for a double slit hit with a green and red laser. The peaks are used to plot a peak position against order of maxima plot.
+
+
+SINGLE SLIT
+s200
+This data was gathered from the diffraction of the single slit with a width of .2 mm. The transmission measurement was taken three times to get an accurate measurement of the central maximum width. The width of the central maximum is measured with the green laser is 
+
+s400
+This data was gathered from the diffraction of the single slit with a width of .4 mm. The transmission measurement was taken three times to get an accurate measurement of the central maximum width.
+
+s800
+This data was gathered from the diffraction of the single slit with a width of .8 mm. The transmission measurement was taken three times to get an accurate measurement of the central maximum width.
+
+s1600
+This data was gathered from the diffraction of the single slit with a width of 1.6 mm. The transmission measurement was taken three times to get an accurate measurement of the central maximum width.

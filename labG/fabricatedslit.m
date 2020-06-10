@@ -6,46 +6,74 @@ for i=3:length(Files)
     load(fullfile('..','labG','fdata',Files(i).name));
 end
 
+s1g = [slit1gposition(:,2), slit1g(:,2)];
+s1r = [slit1rposition(:,2), slit1r(:,2)];
+s2g = [slit2gposition(:,2), slit2g(:,2)];
+s2r = [slit2rposition(:,2), slit2r(:,2)];
 
-%% ANALYZING DATA
+while i<500
 
-%SINGLE SLIT DATA
-%S20G
-tempStartX = 6.5;
-tempEndX = 10;
-tempMinY = 0;
-tempMaxY = 10;
-s20g1w = widthFind(s20g1, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20g2w = widthFind(s20g2, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20g3w = widthFind(s20g3, tempStartX, tempEndX, tempMinY, tempMaxY);
-s20gw = (s20g1w+s20g2w+s20g3w)/3
+    s1g(:,1) = smooth(s1g(:,1));
+    s1g(:,2) = smooth(s1g(:,2));
+    s1r(:,1) = smooth(s1r(:,1));
+    s1r(:,2) = smooth(s1r(:,2));
+    s2g(:,1) = smooth(s2g(:,1));
+    s2g(:,2) = smooth(s2g(:,2));
+    s2r(:,1) = smooth(s2r(:,1));
+    s2r(:,2) = smooth(s2r(:,2));
+
+i = i+1;
+end
+
+%%
+
+slit1gw = abs(7.8-8.1);
+slit1rw = abs(8.5-8.8);
+slit2gw = abs(8.1-7.8);
+slit2rw = abs(8.7-8.4);
 
 %% PLOTTING DATA
 
 %SINGLE SLIT DATA
 %S20
 f1 = figure(1);
-subplot(1,2,1)
 hold on
-plot(s20g1(:,1),s20g1(:,2),'black')
-plot(s20g2(:,1),s20g2(:,2),'b')
-plot(s20g3(:,1),s20g3(:,2),'c')
-    legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=20\mum green laser')
-    xlim([min(s20g1(:,1)) max(s20g1(:,1))])
-    xlabel('Distance (mm)')
+subplot(1,2,1)
+plot(abs(s1g(:,1)*100),s1g(:,2),'black')
+    xlim([7 9])
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
     grid on
 hold off
 subplot(1,2,2)
 hold on
-plot(s20r1(:,1),s20r1(:,2),'black')
-plot(s20r2(:,1),s20r2(:,2),'b')
-plot(s20r3(:,1),s20r3(:,2),'c')
-    legend('Run 1','Run 2','Run 3')
-    title('Single Slit a=20\mum red laser')
-    xlim([min(s20r1(:,1)) max(s20r1(:,1))])
-    xlabel('Distance (mm)')
+plot(abs(s1r(:,1)*100),s1r(:,2),'black')
+    xlim([7.5 9.6])
+    xlabel('Distance (cm)')
     ylabel('Transmission (%)')
-grid on
+    grid on
 hold off
+
+f2 = figure(2);
+subplot(1,2,1)
+hold on
+plot(abs(s2g(:,1)*100),s2g(:,2),'black')
+    xlim([7 9])
+    xlabel('Distance (cm)')
+    ylabel('Transmission (%)')
+    grid on
+hold off
+subplot(1,2,2)
+hold on
+plot(abs(s2r(:,1)*100),s2r(:,2),'black')
+    xlim([7.5 9.6])
+    xlabel('Distance (cm)')
+    ylabel('Transmission (%)')
+    grid on
+hold off
+
+a1 = 45;
+a2 = 42;
+
+f1.Color = 'WHITE';
+f2.Color = 'WHITE';
